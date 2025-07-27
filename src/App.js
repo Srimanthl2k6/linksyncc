@@ -754,14 +754,6 @@ enable\nconf t\nhostname ${sw.label}\n${securityCommands}`;
   const Step3Results = () => {
       if (!networkDesign) return null;
       
-      const [nodes, setNodes] = useState(networkDesign.topology.nodes);
-      const [links, setLinks] = useState(networkDesign.topology.links);
-      const [draggingNode, setDraggingNode] = useState(null);
-      const [offset, setOffset] = useState({ x: 0, y: 0 });
-      const [hoveredNode, setHoveredNode] = useState(null);
-      const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
-      const svgRef = useRef(null);
-
       const handleMouseDown = (e, node) => {
           const CTM = svgRef.current.getScreenCTM();
           const mouseX = (e.clientX - CTM.e) / CTM.a;
