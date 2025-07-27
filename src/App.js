@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Building, Users, Server, Cloud, Network, ChevronDown, ChevronUp, Share2, Wifi, Shield, GitCommit, Route, Layers, Lock, Phone, Sun, Moon, HardDrive, Printer as PrinterIcon, Laptop, Smartphone, Tablet, Sparkles, Clipboard, Check, Home, Briefcase, IndianRupee, Bot, Send, Power } from 'lucide-react';
+import { ArrowRight, Building, Users, Server, Cloud, Network, Share2, Wifi, Shield, GitCommit, Route, Layers, Lock, Phone, HardDrive, Printer as PrinterIcon, Laptop, Smartphone, Tablet, Clipboard, Check, Home, Briefcase, IndianRupee, Bot, Send, Power } from 'lucide-react';
 
 // --- UI Components ---
 
@@ -111,6 +111,15 @@ const App = () => {
   // Step 3: Generated Design
   const [networkDesign, setNetworkDesign] = useState(null);
   
+  // State for interactive diagram - LIFTED UP
+  const [nodes, setNodes] = useState([]);
+  const [links, setLinks] = useState([]);
+  const [draggingNode, setDraggingNode] = useState(null);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [hoveredNode, setHoveredNode] = useState(null);
+  const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
+  const svgRef = useRef(null);
+
   const addDepartment = (name, employees) => {
     const newId = departments.length > 0 ? Math.max(...departments.map(d => d.id)) + 1 : 1;
     const nextVlan = departments.length > 0 ? Math.max(...departments.map(d => d.vlan)) + 10 : 10;
@@ -160,6 +169,8 @@ const App = () => {
             break;
     }
     setNetworkDesign(design);
+    setNodes(design.topology.nodes);
+    setLinks(design.topology.links);
     setStep(3);
   };
   
