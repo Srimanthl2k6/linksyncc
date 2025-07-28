@@ -23,7 +23,7 @@ LinkSync is a revolutionary web-based tool that automates the entire process of 
 
 This isn't just a diagramming tool. LinkSync provides a full suite of documentation, including an interactive topology map, a detailed IP addressing plan, a complete cabling guide, and most importantly, **ready-to-use, copy-and-paste CLI configurations for every single device in the network.**
 
-**[➡️ View Live Demo on Vercel ([Coming Soon!](https://linksyncc.vercel.app/))](#)**
+**[➡️ View Live Demo on Vercel ([LinkSync](https://linksyncc.vercel.app/))](#)**
 
 ## 🚀 Key Features
 
