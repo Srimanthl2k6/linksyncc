@@ -577,7 +577,7 @@ enable\nconf t\nhostname ${sw.label}\n${securityCommands}`;
     }, []);
 
     return (
-        <div className="relative h-[calc(100vh-4rem)] flex items-center justify-center text-center overflow-hidden bg-black">
+        <div className="relative h-screen flex items-center justify-center text-center overflow-hidden bg-black">
             <canvas ref={canvasRef} className="absolute inset-0 z-10 w-full h-full"></canvas>
             <div className="relative z-20 flex flex-col items-center p-4">
                 <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white leading-tight font-mono" style={{ textShadow: '0 0 10px #0F0, 0 0 20px #0F0' }}>
@@ -610,7 +610,7 @@ enable\nconf t\nhostname ${sw.label}\n${securityCommands}`;
   };
 
   const StepSelectDesign = () => (
-    <div className="text-center">
+    <div className="text-center max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-green-300 mb-2 font-mono">Choose Your Network Scale</h2>
         <p className="text-green-400/80 mb-8">Select a template that best fits your project requirements.</p>
         <div className="grid md:grid-cols-3 gap-6">
@@ -638,7 +638,7 @@ enable\nconf t\nhostname ${sw.label}\n${securityCommands}`;
 
 
   const Step1Form = () => (
-    <Card>
+    <Card className="max-w-4xl mx-auto">
       <div className="flex items-center gap-3 mb-6">
         <div className="p-2 rounded-lg bg-green-500/20"><Building className="text-green-400" /></div>
         <h2 className="text-2xl font-bold text-green-200">Office Details</h2>
@@ -672,7 +672,7 @@ enable\nconf t\nhostname ${sw.label}\n${securityCommands}`;
   );
 
   const Step2Form = () => (
-    <Card>
+    <Card className="max-w-4xl mx-auto">
       <div className="flex items-center gap-3 mb-6">
         <div className="p-2 rounded-lg bg-green-500/20"><Server className="text-green-400" /></div>
         <h2 className="text-2xl font-bold text-green-200">Servers & Services</h2>
@@ -733,20 +733,20 @@ enable\nconf t\nhostname ${sw.label}\n${securityCommands}`;
       
       return (
           <div className="mb-4 bg-black/30 border border-green-800/20 rounded-lg">
-             <div className="p-4">
-                 <h4 className="font-semibold text-lg text-green-400 flex items-center gap-3"><HardDrive size={20}/>{title}</h4>
-                 <div className="relative mt-2">
-                     <pre className="text-sm text-green-300 whitespace-pre-wrap p-4 bg-black/50 rounded-md overflow-x-auto font-mono">
-                         <code>{content}</code>
-                     </pre>
-                     <button 
-                        onClick={() => copyToClipboard(content)} 
-                        className="absolute top-2 right-2 p-1.5 bg-gray-700 rounded-md hover:bg-gray-600 text-gray-300 flex items-center gap-1 text-xs"
-                     >
-                         {copied ? <><Check size={14}/> Copied!</> : <><Clipboard size={14}/> Copy</>}
-                     </button>
-                 </div>
-             </div>
+               <div className="p-4">
+                   <h4 className="font-semibold text-lg text-green-400 flex items-center gap-3"><HardDrive size={20}/>{title}</h4>
+                   <div className="relative mt-2">
+                       <pre className="text-sm text-green-300 whitespace-pre-wrap p-4 bg-black/50 rounded-md overflow-x-auto font-mono">
+                           <code>{content}</code>
+                       </pre>
+                       <button 
+                         onClick={() => copyToClipboard(content)} 
+                         className="absolute top-2 right-2 p-1.5 bg-gray-700 rounded-md hover:bg-gray-600 text-gray-300 flex items-center gap-1 text-xs"
+                       >
+                           {copied ? <><Check size={14}/> Copied!</> : <><Clipboard size={14}/> Copy</>}
+                       </button>
+                   </div>
+               </div>
           </div>
       );
   };
@@ -863,7 +863,7 @@ enable\nconf t\nhostname ${sw.label}\n${securityCommands}`;
       };
 
       return (
-        <div className="space-y-6">
+        <div className="space-y-6 max-w-7xl mx-auto">
             <Card>
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
                     <div>
@@ -971,22 +971,22 @@ enable\nconf t\nhostname ${sw.label}\n${securityCommands}`;
                 <h3 className="text-xl font-bold text-green-300 mb-4">End-Device Setup</h3>
                  <p className="text-green-400/80 mb-4">Configure the end-user devices in each department's LAN as follows:</p>
                  <div className="space-y-4">
-                    <div>
-                        <h4 className="font-semibold text-lg text-green-400 flex items-center gap-2"><Laptop size={20}/> PCs & Laptops</h4>
-                        <p>Go to `Desktop` &gt; `IP Configuration` and select **DHCP**. The device will automatically receive an IP address from its VLAN.</p>
-                    </div>
-                    <div>
-                        <h4 className="font-semibold text-lg text-green-400 flex items-center gap-2"><PrinterIcon size={20}/> Printers</h4>
-                        <p>Printers should have static IPs for reliability. Go to `Desktop` &gt; `IP Configuration`. Select **Static** and assign an IP address from the department's subnet that is outside the DHCP range (e.g., x.x.x.250).</p>
-                    </div>
-                    <div>
-                        <h4 className="font-semibold text-lg text-green-400 flex items-center gap-2"><Phone size={20}/> IP Phones</h4>
-                        <p>IP Phones require no IP configuration. They are powered by the switch (PoE) and will automatically register with the Voice Gateway (CME) and receive an extension.</p>
-                    </div>
                      <div>
-                        <h4 className="font-semibold text-lg text-green-400 flex items-center gap-2"><Smartphone size={20}/> Wireless Devices</h4>
-                        <p>For Tablets and Smartphones, go to `Desktop` &gt; `Wireless`. Connect to the appropriate SSID (e.g., "EMPLOYEE_WIFI") and configure WPA2 security with the appropriate credentials.</p>
-                    </div>
+                         <h4 className="font-semibold text-lg text-green-400 flex items-center gap-2"><Laptop size={20}/> PCs & Laptops</h4>
+                         <p>Go to `Desktop` &gt; `IP Configuration` and select **DHCP**. The device will automatically receive an IP address from its VLAN.</p>
+                     </div>
+                     <div>
+                         <h4 className="font-semibold text-lg text-green-400 flex items-center gap-2"><PrinterIcon size={20}/> Printers</h4>
+                         <p>Printers should have static IPs for reliability. Go to `Desktop` &gt; `IP Configuration`. Select **Static** and assign an IP address from the department's subnet that is outside the DHCP range (e.g., x.x.x.250).</p>
+                     </div>
+                     <div>
+                         <h4 className="font-semibold text-lg text-green-400 flex items-center gap-2"><Phone size={20}/> IP Phones</h4>
+                         <p>IP Phones require no IP configuration. They are powered by the switch (PoE) and will automatically register with the Voice Gateway (CME) and receive an extension.</p>
+                     </div>
+                      <div>
+                         <h4 className="font-semibold text-lg text-green-400 flex items-center gap-2"><Smartphone size={20}/> Wireless Devices</h4>
+                         <p>For Tablets and Smartphones, go to `Desktop` &gt; `Wireless`. Connect to the appropriate SSID (e.g., "EMPLOYEE_WIFI") and configure WPA2 security with the appropriate credentials.</p>
+                     </div>
                  </div>
             </Card>
 
@@ -1002,10 +1002,8 @@ enable\nconf t\nhostname ${sw.label}\n${securityCommands}`;
 
   return (
     <div className="bg-black text-green-300 min-h-screen font-mono">
-      <div className="relative container mx-auto p-4 sm:p-6 lg:p-8">
-        <div className="max-w-6xl mx-auto">
-          {renderStep()}
-        </div>
+      <div className="relative p-4 sm:p-6 lg:p-8">
+        {renderStep()}
       </div>
     </div>
   );
